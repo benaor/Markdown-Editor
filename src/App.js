@@ -9,12 +9,31 @@ class App extends Component {
     text: sampleText
   }
 
+  componentDidMount() {
+    const text = localStorage.getItem('text')
+
+    if (text) {
+      this.setState({ text })
+    } else {
+      this.setState({ text: sampleText })
+    }
+
+  }
+
+  componentDidUpdate() {
+    const text = this.state.text
+    localStorage.setItem('text', text)
+  }
+
   textChange = (event) => {
     const text = event.target.value
     this.setState({ text })
   }
 
-  renderText = (text) => marked(text, { sanitize: true })
+  renderText = (text) => {
+    const __html = marked(text, { sanitize: true })
+    return { __html }
+  }
 
   render() {
     return (
@@ -34,7 +53,7 @@ class App extends Component {
 
           <div className="col-6">
 
-            <div className="resultat" dangerouslySetInnerHTML={{ __html: this.renderText(this.state.text) }}>
+            <div className="resultat" dangerouslySetInnerHTML={this.renderText(this.state.text)}>
 
             </div>
 
