@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import { sampleText } from "./sampleText";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+
+  render() {
+    return (
+      <div className="app container mt-3">
+
+        <div className="row">
+
+          <div className="col-6">
+
+            <textarea
+              className="form-control"
+              rows="30"
+              value={sampleText} />
+
+          </div>
+
+          <div className="col-6">
+
+            <div>
+
+              { sampleText }
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    )
+  };
 }
 
 export default App;
