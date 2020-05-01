@@ -4,6 +4,14 @@ import { sampleText } from "./sampleText";
 
 class App extends Component {
 
+  state = {
+    text : sampleText
+  }
+
+  textChange = (event) => {
+    const text = event.target.value
+    this.setState({ text })
+  }
 
   render() {
     return (
@@ -16,7 +24,8 @@ class App extends Component {
             <textarea
               className="form-control"
               rows="30"
-              value={sampleText} />
+              value={this.state.text} 
+              onChange={this.textChange}/>
 
           </div>
 
